@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36127.28 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "shim.client", "shim.client\shim.client.esproj", "{41E5A753-7BEC-E254-F5DC-A7E3ABE68C21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHIM.Server", "SHIM.Server\SHIM.Server.csproj", "{62FD9490-B4F7-4D91-837B-D687BE80413C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41E5A753-7BEC-E254-F5DC-A7E3ABE68C21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41E5A753-7BEC-E254-F5DC-A7E3ABE68C21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41E5A753-7BEC-E254-F5DC-A7E3ABE68C21}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{41E5A753-7BEC-E254-F5DC-A7E3ABE68C21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41E5A753-7BEC-E254-F5DC-A7E3ABE68C21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41E5A753-7BEC-E254-F5DC-A7E3ABE68C21}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{62FD9490-B4F7-4D91-837B-D687BE80413C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62FD9490-B4F7-4D91-837B-D687BE80413C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62FD9490-B4F7-4D91-837B-D687BE80413C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62FD9490-B4F7-4D91-837B-D687BE80413C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94F81B76-A238-4944-8EAB-97A431469ACB}
+	EndGlobalSection
+EndGlobal
