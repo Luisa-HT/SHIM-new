@@ -47,15 +47,61 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            '^/weatherforecast': {
-                target,
-                secure: false
-            }
+            '/api': {
+                target: target, // The URL of your ASP.NET Core backend
+                changeOrigin: true, // Needed for virtual hosted sites
+                secure: false, // Set to true for production if using valid HTTPS certs, false for self-signed dev certs
+                // rewrite: (path) => path.replace(/^\/api/, '/api'), // Optional: if your backend API base path differs
+            },
+            '/_configuration': {
+                target: target,
+                changeOrigin: true,
+                secure: false,
+            },
+            '/.well-known': {
+                target: target,
+                changeOrigin: true,
+                secure: false,
+            },
+            '/Identity': {
+                target: target,
+                changeOrigin: true,
+                secure: false,
+            },
+            '/connect': {
+                target: target,
+                changeOrigin: true,
+                secure: false,
+            },
+            '/_framework': {
+                target: target,
+                changeOrigin: true,
+                secure: false,
+            },
+            '/_vs/browserLink': {
+                target: target,
+                changeOrigin: true,
+                secure: false,
+            },
+            '/_host': {
+                target: target,
+                changeOrigin: true,
+                secure: false,
+            },
         },
         port: parseInt(env.DEV_SERVER_PORT || '50323'),
         https: {
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),
         }
+    },
+    css: {
+        preprocessorOptions: {
+            less: {
+                math: "always",
+                relativeUrls: true,
+                javascriptEnabled: true
+            },
+        },
     }
 })

@@ -1,0 +1,129 @@
+// ClientApp/src/components/AppSidebar/AppSidebar.module.less
+@import '~antd/lib/theme/themes/default';
+
+.sidebar {
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: @component-background; // White background for sidebar
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.08); // Subtle shadow to separate from content
+  overflow-y: auto; // Enable scrolling if content overflows
+  z-index: 100; // Ensure sidebar is above content but below header
+
+  .logo {
+    height: @layout-header-height; // Match header height
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    border-bottom: 1px solid @border-color-split; // Separator line
+
+    .logoIcon {
+      font-size: 24px;
+      color: @primary-color;
+      margin-right: 8px;
+    }
+
+    .logoText {
+      font-size: 18px;
+      font-weight: bold;
+      color: @primary-color;
+      white-space: nowrap; // Prevent text wrapping
+      overflow: hidden;
+      text-overflow: ellipsis; // Add ellipsis if text is too long
+    }
+  }
+
+  .menu {
+    border-right: none; // Remove default Ant Design menu border
+    background: transparent; // Make menu background transparent
+    padding-top: 16px; // Padding below logo
+
+    .ant-menu-item, .ant-menu-submenu-title {
+      height: 48px; // Consistent height for menu items
+      line-height: 48px;
+      margin: 0; // Remove default vertical margins
+      font-size: 16px; // Adjust font size
+      transition: all 0.3s;
+
+      .anticon {
+        font-size: 18px; // Adjust icon size
+        margin-right: 12px; // Space between icon and text
+      }
+
+      &:hover {
+        color: @primary-color;
+        .anticon {
+          color: @primary-color;
+        }
+      }
+    }
+
+    .ant-menu-item-selected {
+      background-color: @primary-2; // Light primary color for selected item background
+      color: @primary-color;
+      .anticon {
+        color: @primary-color;
+      }
+      &::after { // Remove default Ant Design selected item indicator
+        border-right: none;
+      }
+    }
+
+    .ant-menu-submenu-selected {
+      color: @primary-color;
+    }
+
+    .ant-menu-submenu-inline > .ant-menu-submenu-title .ant-menu-submenu-arrow {
+      right: 16px; // Position arrow correctly
+    }
+  }
+
+  .collapseButton {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: @layout-sider-background; // Match sider background
+    border-top: 1px solid @border-color-split;
+    font-size: 18px;
+    color: @text-color-secondary;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: @primary-1; // Light hover effect
+      color: @primary-color;
+    }
+  }
+}
+
+// When sidebar is collapsed
+.sidebar.ant-layout-sider-collapsed {
+  .logo {
+    .logoIcon {
+      margin-right: 0; // Remove margin when collapsed
+    }
+    .logoText {
+      display: none; // Hide text when collapsed
+    }
+  }
+  .menu {
+    .ant-menu-item, .ant-menu-submenu-title {
+      text-align: center; // Center icon
+      padding: 0 !important; // Remove padding
+      .anticon {
+        margin: 0; // Remove margin
+      }
+    }
+    .ant-menu-submenu-inline > .ant-menu-submenu-title .ant-menu-submenu-arrow {
+      display: none; // Hide arrow when collapsed
+    }
+  }
+}

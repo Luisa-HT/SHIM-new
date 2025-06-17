@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "less": "^4.3.0",
+    "less-loader": "^12.3.0"
+  },
+  "dependencies": {
+    "antd": "^5.25.4"
+  }
+}

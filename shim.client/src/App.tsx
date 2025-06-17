@@ -1,58 +1,39 @@
-import { useEffect, useState } from 'react';
-import './App.css';
+// ClientApp/src/App.tsx
+import React, { type FC } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { ConfigProvider } from 'antd'; // For Ant Design configuration
+import AppRoutes from './routes/AppRoutes'; // Your main routing component
+import { AuthProvider } from './contexts/AuthContext'; // Your AuthContext provider
 
-interface Forecast {
-    date: string;
-    temperatureC: number;
-    temperatureF: number;
-    summary: string;
-}
+// Removed: import 'antd/dist/antd.less'; // Or 'antd/dist/antd.css' if not using less
+// Ant Design styles are typically imported automatically by build tools or babel-plugin-import.
 
-function App() {
-    const [forecasts, setForecasts] = useState<Forecast[]>();
+import './assets/styles/index.less'; // Your custom global styles (still needed for your own Less)
 
-    useEffect(() => {
-        populateWeatherData();
-    }, []);
-
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tableLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
-
+const App: FC = () => {
     return (
-        <div>
-            <h1 id="tableLabel">Weather forecast</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
-        </div>
+        <ConfigProvider
+            theme={{
+                token: {
+                    colorPrimary: '#1890ff', // Ant Design primary blue
+                    colorLink: '#1890ff',
+                    borderRadius: 4, // Default border radius for Ant Design components
+                },
+                // You can add more theme customizations here
+                // components: {
+                //   Button: {
+                //     colorPrimary: '#52c41a',
+                //   },
+                // },
+            }}
+        >
+            <Router>
+                <AuthProvider>
+                    <AppRoutes />
+                </AuthProvider>
+            </Router>
+        </ConfigProvider>
     );
-
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        if (response.ok) {
-            const data = await response.json();
-            setForecasts(data);
-        }
-    }
-}
+};
 
 export default App;

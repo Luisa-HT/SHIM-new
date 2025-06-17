@@ -1,0 +1,70 @@
+// ClientApp/src/components/AppHeader/AppHeader.module.less
+@import '~antd/lib/theme/themes/default';
+
+.header {
+  background: @component-background; // White background for the header
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; // Align items to the right
+  height: @layout-header-height;
+  line-height: @layout-header-height;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08); // Subtle shadow
+  position: fixed; // Fixed header
+  width: 100%;
+  top: 0;
+  z-index: 99; // Below AuthLayout header (if both are used on same page, which they shouldn't be)
+}
+
+.icon {
+  font-size: 20px;
+  color: @text-color-secondary;
+  cursor: pointer;
+  margin-left: 20px; // Spacing between icons
+  transition: color 0.3s;
+  &:hover {
+    color: @primary-color;
+  }
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+}
+
+.profileLink {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  cursor: pointer;
+  .avatar {
+    background-color: @primary-color; // Example avatar background
+    color: @text-color-inverse;
+    margin-right: 8px;
+  }
+  .userName {
+    color: @text-color;
+    font-weight: 500;
+  }
+  &:hover {
+    .userName {
+      color: @primary-color;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: @screen-sm-min) {
+  .header {
+    padding: 0 16px;
+  }
+  .icon {
+    font-size: 18px;
+    margin-left: 15px;
+  }
+  .profileLink {
+    .userName {
+      display: none; // Hide user name on very small screens
+    }
+  }
+}

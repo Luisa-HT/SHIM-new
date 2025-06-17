@@ -1,0 +1,105 @@
+// ClientApp/src/components/AuthLayout/AuthLayout.module.less
+@import '~antd/lib/theme/themes/default';
+
+.authLayout {
+  min-height: 100vh;
+  // Use your background image here. Ensure the path is correct relative to the compiled CSS.
+  // The image 'landing-background.jpg' should be in 'ClientApp/src/assets/images/'
+  background-image: url('../../assets/images/landing-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column; // Stack header and content vertically
+}
+
+.header {
+  background: rgba(255, 255, 255, 0.8); // Semi-transparent white background
+  padding: 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Subtle shadow
+  position: fixed; // Fixed header
+  width: 100%;
+  top: 0;
+  z-index: 100; // Ensure header is above other content
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  .logoText {
+    font-size: 20px;
+    font-weight: bold;
+    color: @primary-color; // Use Ant Design primary color
+    margin-right: 20px;
+  }
+}
+
+.menu {
+  flex-grow: 1; // Allows menu to take available space
+  border-bottom: none; // Remove default Ant Design menu border
+  background: transparent; // Make menu background transparent
+  .ant-menu-item {
+    font-size: 16px;
+    margin: 0 10px;
+    &:hover {
+      color: @primary-color;
+    }
+  }
+  .ant-menu-item-selected {
+    color: @primary-color;
+    border-bottom-color: @primary-color;
+  }
+}
+
+.authButtons {
+  .ant-btn {
+    margin-left: 10px;
+    border-radius: @border-radius-base; // Use Ant Design default border radius
+  }
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: @layout-header-height; // Add padding to account for fixed header
+  // Ensure the background is visible behind the content
+  background: transparent;
+}
+
+// Responsive adjustments
+@media (max-width: @screen-md-min) { // For medium screens and smaller
+  .header {
+    padding: 0 20px;
+  }
+  .menu {
+    display: none; // Hide menu items on smaller screens, could use a Drawer for mobile nav
+  }
+  .logo {
+    flex-grow: 1; // Logo takes more space
+  }
+}
+
+@media (max-width: @screen-sm-min) { // For small screens (mobile)
+  .header {
+    flex-direction: column; // Stack logo and buttons vertically
+    align-items: flex-start;
+    padding: 10px 20px;
+    height: auto; // Adjust height dynamically
+  }
+  .authButtons {
+    width: 100%;
+    margin-top: 10px;
+    .ant-btn {
+      width: calc(50% - 5px); // Make buttons take half width
+      margin-left: 0;
+      &:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+}
